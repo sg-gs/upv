@@ -1,4 +1,4 @@
-package practica1;
+package p1;
 public class Rectangle extends Figure
 {
     private double base; 

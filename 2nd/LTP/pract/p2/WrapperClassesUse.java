@@ -1,4 +1,4 @@
-package practica2;
+package p2;
 
 /**
  * class WrapperClassesUse.

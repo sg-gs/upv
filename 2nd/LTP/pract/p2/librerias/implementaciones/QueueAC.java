@@ -1,6 +1,6 @@
-package practica2.librerias.implementaciones;
+package p2.librerias.implementaciones;
 
-import practica2.librerias.modelos.Queue;
+import p2.librerias.modelos.Queue;
 
 /**
  * class QueueAC<T>

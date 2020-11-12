@@ -1,4 +1,4 @@
-package practica2.librerias.modelos;
+package p2.librerias.modelos;
 
 /**
  * interface Queue<T>
