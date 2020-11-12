@@ -1,4 +1,4 @@
-package practica2.librerias.implementaciones;
+package p2.librerias.implementaciones;
 
 import static org.junit.Assert.*;
 import org.junit.After;

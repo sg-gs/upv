@@ -1,4 +1,4 @@
-package practica3;
+package p3;
 
 /**
  * Write a description of interface ComparableRange here.

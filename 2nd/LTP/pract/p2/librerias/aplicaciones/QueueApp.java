@@ -1,7 +1,7 @@
-package practica2.librerias.aplicaciones;
+package p2.librerias.aplicaciones;
 
-import practica2.librerias.implementaciones.*;
-import practica2.librerias.modelos.*;
+import p2.librerias.implementaciones.*;
+import p2.librerias.modelos.*;
 
 /**
  * class QueueApp.

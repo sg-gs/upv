@@ -1,2 +1,8 @@
 .DS_Store
 **/.DS_Store
+
+# Ignoring compiled java files
+.class
+.ctxt
+**/*.class
+**/*.ctxt
