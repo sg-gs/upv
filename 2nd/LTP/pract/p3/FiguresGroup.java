@@ -1,4 +1,4 @@
-package practica3;
+package p3;
 
 import java.util.*;
 
@@ -26,8 +26,7 @@ public class FiguresGroup {
         if(numF > 0) l.add(figuresList[0]);
         for(int i = 1; i < numF; i++){
             int j = l.size() - 1;
-            while(j >= 0 &&
-                figuresList[i].compareTo(l.get(j)) < 0){
+            while(j >= 0 && figuresList[i].compareTo(l.get(j)) < 0){
                 j--;
             }
             l.add(j + 1, figuresList[i]);
