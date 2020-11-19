@@ -6,31 +6,31 @@ public class ClienteEco
 {
 	public static void main(String args[]) 
 	{
-		ClienteEco ct2 = new ClienteEco();
-    	}
+		new ClienteEco();
+    }
 
 	public ClienteEco()
 	{
 		this.connect();
 	}
 
-    	public void connect() 
-    	{
+	public void connect() 
+	{
 		try {
 			Socket s = new Socket("zoltar.redes.upv.es", 7);
-			System.out.println("Conectado!");
+			System.out.println("Connected!");
 
 			// PrintWriter pw = new PrintWriter(s.getOutputStream(), false);
-			// pw.println("¡¡Hola Mundo!!");
+			// pw.println("Hello World!");
 			
-			// Primera corrección
+			// First fix, explicitly flushing
 			// PrintWriter pw = new PrintWriter(s.getOutputStream(), false);
-			// pw.println("¡¡Hola Mundo!!");
+			// pw.println("Hello World!");
 			// pw.flush();
 
-			// Segunda corrección, con autoFlush
+			// Second fix, using autoFlush
 			PrintWriter pw = new PrintWriter(s.getOutputStream(), true);
-			pw.println("¡¡Hola Mundo!!");
+			pw.println("Hello World!");
 
 			Scanner zoltar = new Scanner(s.getInputStream());
 			while(zoltar.hasNext()) 
@@ -42,11 +42,11 @@ public class ClienteEco
 		} 
 		catch (UnknownHostException uhe)
 		{
-			System.out.println("Nombre de servidor desconocido");
+			System.out.println("Unknown Host");
 		} 
 		catch (ConnectException ioe)
 		{
-			System.out.println("No es posible realizar la conexión");
+			System.out.println("Cannot connect to the host");
 		} 
 		catch (Exception e)
 		{

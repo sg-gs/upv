@@ -4,13 +4,14 @@ import java.util.Scanner;
 
 public class ClienteSMTP {
 
-        static void error(String cadena) {
+    static void error(String cadena) {
 		System.out.println(cadena);
 		System.exit(0);
 	}
 
 	public static void main(String args[]) {
-		try{
+		try 
+		{
 			System.setProperty ("line.separator","\r\n");
 			Socket s = new Socket("serveis-rdc.redes.upv.es", 25);
 			System.out.println("Conectado al servidor SMTP de serveis-rdc");
@@ -53,27 +54,27 @@ public class ClienteSMTP {
 
 			salida.println("higihgirgri");
 			salida.println(".");
-			
-
 			salida.flush();
+
 			respuesta = entrada.nextLine();
 			System.out.println(respuesta);
 			if (!respuesta.startsWith("250")) {error(respuesta);}
 
 			salida.println("QUIT");
 			salida.flush();
+
 			respuesta = entrada.nextLine();
 			System.out.println(respuesta);
 			if (!respuesta.startsWith("221")) {error(respuesta);}
 
 			s.close();
-			System.out.println("Desconectado");
+			System.out.println("Disconnected");
 
 		} catch (UnknownHostException e) {
-			System.out.println("Host desconocido");
+			System.out.println("Unknown host");
 			System.out.println(e);
 		} catch (IOException e) {
-			System.out.println("No se puede conectar");
+			System.out.println("Cannot connect to the host");
 			System.out.println(e);
 		}
 	}

@@ -1,24 +1,25 @@
 import java.net.*;
-import java.io.*;
 import java.util.Scanner;
 
 public class ClienteDayTime
 {
 	public static void main(String args[]) 
 	{
-		ClienteDayTime ct2 = new ClienteDayTime();
-    	}
+		new ClienteDayTime();
+    }
 
 	public ClienteDayTime()
 	{
 		this.connect();
 	}
 
-    	public void connect() 
-    	{
+	public void connect() 
+	{
 		try {
-			Socket s = new Socket("zoltar.redes.upv.es", 13);
-			System.out.println("Conectado!");
+			String HOST = "zoltar.redes.upv.es";
+			int PORT = 13;
+			Socket s = new Socket(HOST, PORT);
+			System.out.println("Connected!");
 			// Leer primera linea y pintarla
 			Scanner zoltar = new Scanner(s.getInputStream());
 			while(zoltar.hasNext()) 
@@ -29,11 +30,11 @@ public class ClienteDayTime
 		} 
 		catch (UnknownHostException uhe)
 		{
-			System.out.println("Nombre de servidor desconocido");
+			System.out.println("Unknown Host");
 		} 
-		catch (ConnectException ioe)
+		catch (ConnectException ce)
 		{
-			System.out.println("No es posible realizar la conexión");
+			System.out.println("Cannot connect to the host");
 		} 
 		catch (Exception e)
 		{

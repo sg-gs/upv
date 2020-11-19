@@ -1,23 +1,22 @@
 import java.net.*;
-import java.io.*;
 
 public class ClienteTCP2
 {
 	public static void main(String args[]) 
 	{
-		ClienteTCP2 ct2 = new ClienteTCP2();
-    	}
+		new ClienteTCP2();
+    }
 
 	public ClienteTCP2()
 	{
 		this.connect();
 	}
 
-    	public void connect() 
-    	{
+	public void connect() 
+	{
 		try {
 			Socket s = new Socket("www.upv.es", 80);
-			System.out.println("Conectado!");
+			System.out.println("Connected!");
 			// Ejercicio 9
 			System.out.println("Remote Port: " + s.getPort());
 			System.out.println("Remote Host IP: " + s.getInetAddress());
@@ -27,11 +26,11 @@ public class ClienteTCP2
 		} 
 		catch (UnknownHostException uhe)
 		{
-			System.out.println("Nombre de servidor desconocido");
+			System.out.println("Unknown Host.");
 		} 
-		catch (ConnectException ioe)
+		catch (ConnectException ce)
 		{
-			System.out.println("No es posible realizar la conexión");
+			System.out.println("Cannot connect to the host");
 		} 
 		catch (Exception e)
 		{

@@ -5,10 +5,10 @@ public class ClienteTCP1
 {
     public static void main(String args[]) throws UnknownHostException, IOException 
     {
-        int puerto = 80;
-        String servidor = "www.upv.es";
-        Socket s = new Socket(servidor, puerto);
-	System.out.println("Conectado!");
+        int PORT = 80;
+        String HOST = "www.upv.es";
+        Socket s = new Socket(HOST, PORT);
+	    System.out.println("Connected!");
         s.close();
     }
 }

@@ -6,8 +6,8 @@ public class ClienteSMTP
 {
 	public static void main(String args[]) 
 	{
-		ClienteSMTP ct2 = new ClienteSMTP();
-    	}
+		new ClienteSMTP();
+    }
 
 	public ClienteSMTP()
 	{
@@ -21,7 +21,7 @@ public class ClienteSMTP
 			System.setProperty("line.separator", "\r\n");
 
 			Socket s = new Socket("smtp.upv.es", 25);
-			System.out.println("Conectado!");
+			System.out.println("Connected!");
 
 			// Recibir primer mensaje
 			Scanner smtpUpv = new Scanner(s.getInputStream());
@@ -32,17 +32,17 @@ public class ClienteSMTP
 
 			// Recibir respuesta
 			Scanner smtpUpvDos = new Scanner(s.getInputStream());
-			System.out.println(">> zoltar.redes.upv.es: " + smtpUpv.nextLine());
+			System.out.println(">> zoltar.redes.upv.es: " + smtpUpvDos.nextLine());
 
 			s.close();
 		} 
 		catch (UnknownHostException uhe)
 		{
-			System.out.println("Nombre de servidor desconocido");
+			System.out.println("Unknown Host");
 		} 
-		catch (ConnectException ioe)
+		catch (ConnectException ce)
 		{
-			System.out.println("No es posible realizar la conexión");
+			System.out.println("Cannot connect to the host");
 		} 
 		catch (Exception e)
 		{

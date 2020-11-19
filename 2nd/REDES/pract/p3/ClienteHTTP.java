@@ -6,19 +6,19 @@ public class ClienteHTTP
 {
 	public static void main(String args[]) 
 	{
-		ClienteHTTP ct2 = new ClienteHTTP();
-    	}
+		new ClienteHTTP();
+    }
 
 	public ClienteHTTP()
 	{
 		this.connect();
 	}
 
-    	public void connect() 
-    	{
+	public void connect() 
+	{
 		try {
 			Socket s = new Socket("www.upv.es", 80);
-			System.out.println("Conectado!");
+			System.out.println("Connected!");
 
 			// Enviar Request
 			PrintWriter pw = new PrintWriter(s.getOutputStream(), true);
@@ -36,11 +36,11 @@ public class ClienteHTTP
 		} 
 		catch (UnknownHostException uhe)
 		{
-			System.out.println("Nombre de servidor desconocido");
+			System.out.println("Unknown Host");
 		} 
-		catch (ConnectException ioe)
+		catch (ConnectException ce)
 		{
-			System.out.println("No es posible realizar la conexión");
+			System.out.println("Cannot connect to the server");
 		} 
 		catch (Exception e)
 		{
