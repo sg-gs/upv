@@ -62,7 +62,6 @@ public class ClienteSMTP {
 
 			salida.println("QUIT");
 			salida.flush();
-
 			respuesta = entrada.nextLine();
 			System.out.println(respuesta);
 			if (!respuesta.startsWith("221")) {error(respuesta);}
