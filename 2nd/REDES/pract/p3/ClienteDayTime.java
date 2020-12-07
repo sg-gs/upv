@@ -1,44 +1,32 @@
 import java.net.*;
+import java.io.*;
 import java.util.Scanner;
 
-public class ClienteDayTime
-{
-	public static void main(String args[]) 
-	{
-		new ClienteDayTime();
-    }
+public class ClienteDayTime {
+	public static void main(String args[]) {
+		ClienteDayTime ct2 = new ClienteDayTime();
+	}
 
-	public ClienteDayTime()
-	{
+	public ClienteDayTime() {
 		this.connect();
 	}
 
-	public void connect() 
-	{
+	public void connect() {
 		try {
-			String HOST = "zoltar.redes.upv.es";
-			int PORT = 13;
-			Socket s = new Socket(HOST, PORT);
-			System.out.println("Connected!");
+			Socket s = new Socket("zoltar.redes.upv.es", 13);
+			System.out.println("Conectado!");
 			// Leer primera linea y pintarla
 			Scanner zoltar = new Scanner(s.getInputStream());
-			while(zoltar.hasNext()) 
-			{
+			while (zoltar.hasNext()) {
 				System.out.println(">> zoltar.redes.upv.es: " + zoltar.nextLine());
 			}
 			s.close();
-		} 
-		catch (UnknownHostException uhe)
-		{
-			System.out.println("Unknown Host");
-		} 
-		catch (ConnectException ce)
-		{
-			System.out.println("Cannot connect to the host");
-		} 
-		catch (Exception e)
-		{
-			System.out.println("Unknown exception" + e.getMessage());		
+		} catch (UnknownHostException uhe) {
+			System.out.println("Nombre de servidor desconocido");
+		} catch (ConnectException ioe) {
+			System.out.println("No es posible realizar la conexión");
+		} catch (Exception e) {
+			System.out.println("Unknown exception" + e.getMessage());
 		}
 	}
 }
