@@ -47,9 +47,7 @@ inv([X|L],A,I) :- inv(L,[X|A],I).
  
 
 /** TODO: Exercise 7. Incomplete version of swap: **/         
-swap([],[]).
-swap([X],[X]).
-swap([X,Y|Z], R, P) :- Y, X, 
+swap([F,S|L], [S,F|L]).
 
 
 /**  TODO: Exercise 8. **/
