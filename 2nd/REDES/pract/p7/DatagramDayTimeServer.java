@@ -1,6 +1,3 @@
-
-
-import java.io.*;
 import java.net.*;
 import java.util.*;
 
@@ -25,12 +22,8 @@ public class DatagramDayTimeServer
 				ds.send(dp);			
 			}
 			
-			
-		
 		} catch (Exception e) {
 			System.out.println("Exception" + e.getMessage());
 		}
-		
 	}	
-
 }
