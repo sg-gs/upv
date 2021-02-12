@@ -1,0 +1,18 @@
+total 688
+drwxr-xr-x  17 sergiogutierrezvillalba  staff    544 21 Nov 15:22 .
+drwxr-xr-x   9 sergiogutierrezvillalba  staff    288 20 Nov 21:23 ..
+-rwxr-xr-x   1 sergiogutierrezvillalba  staff  49552 20 Nov 21:37 descriptor
+-rw-r--r--   1 sergiogutierrezvillalba  staff    614 20 Nov 21:36 descriptor.c
+-rwxr-xr-x   1 sergiogutierrezvillalba  staff  49512 20 Nov 21:46 descriptor_out
+-rw-r--r--   1 sergiogutierrezvillalba  staff   1046 20 Nov 21:51 descriptor_output.c
+-rw-r--r--   1 sergiogutierrezvillalba  staff   1323 21 Nov 15:19 la_salida.txt
+-rwxr-xr-x   1 sergiogutierrezvillalba  staff  49640 21 Nov 15:22 ls_redir
+-rw-r--r--   1 sergiogutierrezvillalba  staff    540 21 Nov 15:22 ls_redir.c
+-rwx------   1 sergiogutierrezvillalba  staff      0 21 Nov 15:22 ls_salida.txt
+-rwx------   1 sergiogutierrezvillalba  staff     47 20 Nov 21:54 messages.txt
+-rwx------   1 sergiogutierrezvillalba  staff     23 21 Nov 15:11 output.txt
+-rwxr-xr-x   1 sergiogutierrezvillalba  staff  49736 20 Nov 22:04 redir_out
+-rw-r--r--   1 sergiogutierrezvillalba  staff    964 21 Nov 15:14 redir_output.c
+-rwxr-xr-x   1 sergiogutierrezvillalba  staff  49680 20 Nov 21:54 share
+-rwxr-xr-x   1 sergiogutierrezvillalba  staff  49680 20 Nov 21:54 share_file
+-rw-r--r--   1 sergiogutierrezvillalba  staff    706 20 Nov 21:54 share_file.c

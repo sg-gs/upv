@@ -1,20 +1,15 @@
 import java.net.*;
-import java.io.*;
 
-public class ClienteTCP2
-{
-	public static void main(String args[]) 
-	{
-		ClienteTCP2 ct2 = new ClienteTCP2();
-    	}
+public class ClienteTCP2 {
+	public static void main(String args[]) {
+		new ClienteTCP2();
+	}
 
-	public ClienteTCP2()
-	{
+	public ClienteTCP2() {
 		this.connect();
 	}
 
-    	public void connect() 
-    	{
+	public void connect() {
 		try {
 			Socket s = new Socket("www.upv.es", 80);
 			System.out.println("Conectado!");
@@ -24,18 +19,12 @@ public class ClienteTCP2
 			System.out.println("Local Socket Port: " + s.getLocalPort());
 			System.out.println("Local Host IP: " + s.getLocalAddress());
 			s.close();
-		} 
-		catch (UnknownHostException uhe)
-		{
+		} catch (UnknownHostException uhe) {
 			System.out.println("Nombre de servidor desconocido");
-		} 
-		catch (ConnectException ioe)
-		{
+		} catch (ConnectException ioe) {
 			System.out.println("No es posible realizar la conexión");
-		} 
-		catch (Exception e)
-		{
-			System.out.println("Unknown exception" + e.getMessage());		
+		} catch (Exception e) {
+			System.out.println("Unknown exception" + e.getMessage());
 		}
 	}
 }

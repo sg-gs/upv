@@ -4,8 +4,7 @@ public class DatagramPacketClientListener
 {
 	public static void main(String args[])
 	{
-		try 
-		{
+		try {
 			String msg = new String("eee\n");
 			byte [] buf = new byte[256];
 			byte [] msgBytes = msg.getBytes();
