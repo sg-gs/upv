@@ -16,7 +16,12 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
     }
 
     public synchronized void kidSwims() throws InterruptedException {
-        while (instructors == 0 || limitKiReached() || limitCapacityReached() || instructorsWaiting()) {
+        while (
+            noInstructorsSwimming() || 
+            limitCapacityReached() || 
+            instructorsWaiting() ||
+            limitKiReached()
+        ) {
             log.waitingToSwim();
             wait();
         }
@@ -53,7 +58,7 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
     }
 
     public synchronized void instructorRests() throws InterruptedException {
-        while((kids > 0 && instructors == 1) || limitKiReached()) {
+        while((kidsStillSwimming() && onlyOneInstructorSwimming()) || limitKiReached()) {
             log.waitingToRest();
             instructorsWaitingToExit++;
             wait();
@@ -66,6 +71,18 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
         instructorsWaitingToExit--;
         
         notifyAll();
+    }
+
+    private boolean noInstructorsSwimming () {
+        return instructors == 0;
+    }
+
+    private boolean kidsStillSwimming () {
+        return kids > 0;
+    }
+
+    private boolean onlyOneInstructorSwimming () {
+        return instructors == 1;
     }
 
     private boolean instructorsWaiting () {
