@@ -15,11 +15,25 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
         this.cap = cap;
     }
 
+    private boolean noInstructorsSwimming () { return instructors == 0; }
+    private boolean onlyOneInstructorSwimming () { return instructors == 1; }
+    private boolean instructorsWaiting () { return instructorsWaitingToExit > 0; }
+    private boolean limitCapacityReached () { return capCounter >= cap; }
+    private boolean limitKiReached () { return kiCounter >= ki; }
+    private boolean kidsStillSwimming () { return kids > 0; }
+
+    private void incrementKids () { kids++; }
+    private void decrementKids () { kids--; }
+    private void decrementPoolCapacity () { capCounter++; }
+    private void incrementPoolCapacity () { capCounter--; }
+    private void incrementInstructors () { instructors++; }
+    private void decrementInstructors () { instructors--; }
+
     public synchronized void kidSwims() throws InterruptedException {
         while (
             noInstructorsSwimming() || 
-            limitCapacityReached() || 
-            instructorsWaiting() ||
+            limitCapacityReached()   || 
+            instructorsWaiting()      ||
             limitKiReached()
         ) {
             log.waitingToSwim();
@@ -28,8 +42,7 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
 
         log.swimming();
 
-        kids++; capCounter++;
-        recalculateKiCounter();
+        incrementKids(); decrementPoolCapacity(); recalculateKiCounter();
 
         notifyAll();
     }
@@ -37,8 +50,7 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
     public synchronized void kidRests() throws InterruptedException {
         log.resting(); 
 
-        kids--; capCounter--;
-        recalculateKiCounter();
+        decrementKids(); incrementPoolCapacity(); recalculateKiCounter();
 
         notifyAll();
     }
@@ -51,8 +63,7 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
 
         log.swimming();
 
-        instructors++; capCounter++;
-        recalculateKiCounter();
+        incrementInstructors(); decrementPoolCapacity(); recalculateKiCounter();
 
         notifyAll();
     }
@@ -66,35 +77,10 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
 
         log.resting(); 
 
-        instructors--; capCounter--;
-        recalculateKiCounter();
+        decrementInstructors(); incrementPoolCapacity(); recalculateKiCounter();
         instructorsWaitingToExit--;
         
         notifyAll();
-    }
-
-    private boolean noInstructorsSwimming () {
-        return instructors == 0;
-    }
-
-    private boolean kidsStillSwimming () {
-        return kids > 0;
-    }
-
-    private boolean onlyOneInstructorSwimming () {
-        return instructors == 1;
-    }
-
-    private boolean instructorsWaiting () {
-        return instructorsWaitingToExit > 0;
-    }
-
-    private boolean limitCapacityReached () {
-        return capCounter >= cap;
-    }
-
-    private boolean limitKiReached () {
-        return kiCounter >= ki;
     }
 
     private void recalculateKiCounter () {
@@ -110,5 +96,3 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
         kiCounter = (int) Math.ceil(kiCounterDouble);
     }
 }
-
-
