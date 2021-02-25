@@ -1,8 +1,12 @@
 .DS_Store
 **/.DS_Store
 
-# Ignoring compiled java files
+# Java output files
 .class
 .ctxt
 **/*.class
 **/*.ctxt
+**/*.jar
+
+# BlueJ files
+**/*.bluej
