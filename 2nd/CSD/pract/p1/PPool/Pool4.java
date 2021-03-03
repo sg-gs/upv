@@ -69,9 +69,10 @@ public class Pool4 extends Pool {  //kids cannot enter if there are instructors 
     }
 
     public synchronized void instructorRests() throws InterruptedException {
+        instructorsWaitingToExit++;
+
         while((kidsStillSwimming() && onlyOneInstructorSwimming()) || limitKiReached()) {
             log.waitingToRest();
-            instructorsWaitingToExit++;
             wait();
         }
 
