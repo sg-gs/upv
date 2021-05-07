@@ -8,5 +8,17 @@
 **/*.ctxt
 **/*.jar
 
+# EDA Docs
+**/*.LabTests
+2nd/EDA/eda/aplicaciones/biblioteca/**/*.txt
+
 # BlueJ files
 **/*.bluej
+
+# JavaFX useless files
+**/nbproject
+*.jnlp
+**/dist
+**/manifest.mf
+**/*.properties
+**/build.xml
