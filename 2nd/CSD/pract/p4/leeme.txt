@@ -1,0 +1,7 @@
+DistributedChatAlumno tiene la app completa a modo de ejemplo de como debería funcionar.
+DistributedChatSources es el proyecto a rellenar
+
+Como levantar el proyecto:
+1.- rmiregistry 9000 (en una consola)
+2.- java ChatServer myport=9001 (en otra consola)
+3.- java ChatClientCSD myport=9002, 9003.... (en sucesivas consolas)
