@@ -3,6 +3,9 @@ const { socket } = require('zeromq');
 const [_, __, port, nMessages, ...topics] = process.argv;
 
 const pub = socket('pub').bind('tcp://*:' + port);
+const sub = socket('sub').connect('tcp://127.0.0.1:' + port)
+  .subscribe('')
+  .on('message', (m) => console.log(m.toString()));
 
 const topicsHistory = topics.map((topic) => ({
   label: topic,
@@ -22,10 +25,6 @@ const emitMsg = () => {
   topicsHistory.push(topic); 
 }
 
-socket('sub').connect('tcp://127.0.0.1:' + port)
-  .subscribe('')
-  .on('message', (m) => console.log(m.toString()));
-
 const intervalId = setInterval(() => {
   emitMsg();
 
@@ -34,6 +33,8 @@ const intervalId = setInterval(() => {
     setTimeout(() => {
       clearInterval(intervalId);
       console.log('Program finished');
+      pub.close();
+      sub.close();
       process.exit(0);
     }, 500);    
   }
