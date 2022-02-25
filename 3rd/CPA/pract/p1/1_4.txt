@@ -1,0 +1,3 @@
+We can add as many threads as the computer can allow before getting a 'segmentation fault error'.
+
+BUT, in practise, we can execute as parallel tasks as logical cores has our processor.
