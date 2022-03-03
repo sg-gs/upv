@@ -195,8 +195,6 @@ class WordCounter:
         if full is True:
             new_filename += 'f'
 
-        print(sts)
-
         new_filename += '_stats' + source_file_ext
 
         self.write_stats(new_filename, sts, stopwordsfile is not None, full)
