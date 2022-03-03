@@ -1,6 +1,6 @@
 #! -*- encoding: utf8 -*-
 
-## Nombres: 
+## Nombres: Sergio Gutiérrez Villaba
 
 ########################################################################
 ########################################################################
@@ -30,8 +30,8 @@ class WordCounter:
     def write_stats(self, filename, stats, use_stopwords, full):
         """
         Este método escribe en fichero las estadísticas de un texto
-            
-        :param 
+
+        :param
             filename: el nombre del fichero destino.
             stats: las estadísticas del texto.
             use_stopwords: booleano, si se han utilizado stopwords
@@ -46,19 +46,18 @@ class WordCounter:
         bisymbols_dict = stats['bisymbol']
 
         sort_by_alpha = lambda t: t[0]
-        sort_by_freq = lambda w: (w[1], w[0])
 
         words_by_alpha = sorted(words_dict.items(), key=sort_by_alpha)
-        words_by_freq = sorted(words_dict.items(), key=sort_by_freq, reverse=True)
+        words_by_freq = sort_dic_by_values(words_dict)
 
         symbols_by_alpha = sorted(symbols_dict.items(), key=sort_by_alpha)
-        symbols_by_freq = sorted(symbols_dict.items(), key=sort_by_freq, reverse=True)
+        symbols_by_freq = sort_dic_by_values(symbols_dict)
 
         biwords_by_alpha = sorted(biwords_dict.items(), key=sort_by_alpha)
-        biwords_by_freq = sorted(biwords_dict.items(), key=sort_by_freq, reverse=True)
+        biwords_by_freq = sort_dic_by_values(biwords_dict)
 
         bisymbols_by_alpha = sorted(bisymbols_dict.items(), key=sort_by_alpha)
-        bisymbols_by_freq = sorted(bisymbols_dict.items(), key=sort_by_freq, reverse=True)
+        bisymbols_by_freq = sort_dic_by_values(bisymbols_dict)
 
         lines = []
         lines.append('Lines: ' + str(stats['nlines']) + '\n')
@@ -67,8 +66,8 @@ class WordCounter:
         lines.append('Vocabulary size: ' + str(len(words_dict.items())) + '\n')
 
         lines.append('Number of symbols: ' + str(reduce(lambda a, b: a + b[1], symbols_dict.items(), 0)) + '\n')
-        lines.append('Number of different symbols: ' + str(len(stats['symbol'].items())) + '\n') 
-        
+        lines.append('Number of different symbols: ' + str(len(stats['symbol'].items())) + '\n')
+
         lines.append('Words (alphabetical order): \n')
         for word in words_by_alpha:
             lines.append('\t{0}: {1}\n'.format(word[0], str(word[1])))
@@ -92,7 +91,7 @@ class WordCounter:
         lines.append('Word pairs (by frequency): \n')
         for biword in biwords_by_freq:
             lines.append('\t{0}: {1}\n'.format(biword[0], str(biword[1])))
-        
+
         lines.append('Symbol pairs (alphabetical order): \n')
         for bisymbol in bisymbols_by_alpha:
             lines.append('\t{0}: {1}\n'.format(bisymbol[0], str(bisymbol[1])))
@@ -102,10 +101,10 @@ class WordCounter:
             lines.append('\t{0}: {1}\n'.format(bisymbol[0], str(bisymbol[1])))
 
         with open(filename, 'w') as fh:
-            for line in lines: 
+            for line in lines:
                 fh.write(line)
 
-        if full is True: 
+        if full is True:
             for line in lines:
                 print(line)
 
@@ -113,7 +112,7 @@ class WordCounter:
         """
         Este método calcula las estadísticas de un fichero de texto
 
-        :param 
+        :param
             filename: el nombre del fichero.
             lower: booleano, se debe pasar todo a minúsculas?
             stopwordsfile: nombre del fichero con las stopwords o None si no se aplican
@@ -154,7 +153,7 @@ class WordCounter:
                 n = len(words)
 
                 for i in range(n - 1):
-                    if (words[i] == '$' and i == n - 1) or words[i] in stopwords or words[i+1] in stopwords: 
+                    if (words[i] == '$' and i == n - 1) or words[i] in stopwords or words[i+1] in stopwords:
                         continue
 
                     bigram = words[i] + ' ' + words[i+1]
@@ -168,9 +167,9 @@ class WordCounter:
 
                         bisymbol = bigram[j] + bigram[j+1]
                         sts['bisymbol'][bisymbol] = sts['bisymbol'].get(bisymbol, 0) + 1
-            
+
             words = map(lambda x: re.sub(self.clean_re, "", x.lower() if lower else x), line.split())
-            
+
             for word in words:
                 if word in stopwords:
                     sts['nstopwords'] += 1
@@ -206,7 +205,7 @@ class WordCounter:
         """
         Este método calcula las estadísticas de una lista de ficheros de texto
 
-        :param 
+        :param
             filenames: lista con los nombre de los ficheros.
             args: argumentos que se pasan a "file_stats".
 
@@ -223,18 +222,18 @@ if __name__ == "__main__":
                         help='text file.')
 
     parser.add_argument('-l', '--lower', dest='lower',
-                        action='store_true', default=False, 
+                        action='store_true', default=False,
                         help='lowercase all words before computing stats.')
 
     parser.add_argument('-s', '--stop', dest='stopwords', action='store',
                         help='filename with the stopwords.')
 
     parser.add_argument('-b', '--bigram', dest='bigram',
-                        action='store_true', default=False, 
+                        action='store_true', default=False,
                         help='compute bigram stats.')
 
     parser.add_argument('-f', '--full', dest='full',
-                        action='store_true', default=False, 
+                        action='store_true', default=False,
                         help='show full stats.')
 
     args = parser.parse_args()
