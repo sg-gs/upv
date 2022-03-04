@@ -69,45 +69,45 @@ class WordCounter:
         lines.append('Number of symbols: ' + str(reduce(lambda a, b: a + b[1], symbols_dict.items(), 0)) + '\n')
         lines.append('Number of different symbols: ' + str(len(stats['symbol'].items())) + '\n')
 
+        no_full_limit = 20
+
         lines.append('Words (alphabetical order): \n')
-        for word in words_by_alpha:
+        for word in (words_by_alpha if full else words_by_alpha[:min(len(words_by_alpha), no_full_limit)]):
             lines.append('\t{0}: {1}\n'.format(word[0], str(word[1])))
 
         lines.append('Words (by frequency): \n')
-        for word in words_by_freq:
+        for word in (words_by_freq if full else words_by_freq[:min(len(words_by_freq), no_full_limit)]):
             lines.append('\t{0}: {1}\n'.format(word[0], str(word[1])))
 
         lines.append('Symbols (alphabetical order): \n')
-        for symbol in symbols_by_alpha:
+        for symbol in (symbols_by_alpha if full else symbols_by_alpha[:min(len(symbols_by_alpha), no_full_limit)]):
             lines.append('\t{0}: {1}\n'.format(symbol[0], str(symbol[1])))
 
         lines.append('Symbols (by frequency): \n')
-        for symbol in symbols_by_freq:
+        for symbol in (symbols_by_freq if full else symbols_by_freq[:min(len(symbols_by_freq), no_full_limit)]):
             lines.append('\t{0}: {1}\n'.format(symbol[0], str(symbol[1])))
 
-        lines.append('Word pairs (alphabetical order): \n')
-        for biword in biwords_by_alpha:
-            lines.append('\t{0}: {1}\n'.format(biword[0], str(biword[1])))
+        if len(biwords_dict.items()) > 0:
+            lines.append('Word pairs (alphabetical order): \n')
+            for biword in (biwords_by_alpha if full else biwords_by_alpha[:min(len(biwords_by_alpha), no_full_limit)]):
+                lines.append('\t{0}: {1}\n'.format(biword[0], str(biword[1])))
 
-        lines.append('Word pairs (by frequency): \n')
-        for biword in biwords_by_freq:
-            lines.append('\t{0}: {1}\n'.format(biword[0], str(biword[1])))
+            lines.append('Word pairs (by frequency): \n')
+            for biword in (biwords_by_freq if full else biwords_by_freq[:min(len(biwords_by_freq), no_full_limit)]):
+                lines.append('\t{0}: {1}\n'.format(biword[0], str(biword[1])))
 
-        lines.append('Symbol pairs (alphabetical order): \n')
-        for bisymbol in bisymbols_by_alpha:
-            lines.append('\t{0}: {1}\n'.format(bisymbol[0], str(bisymbol[1])))
+        if len(bisymbols_dict.items()) > 0:
+            lines.append('Symbol pairs (alphabetical order): \n')
+            for bisymbol in (bisymbols_by_alpha if full else bisymbols_by_alpha[:min(len(bisymbols_by_alpha), no_full_limit)]):
+                lines.append('\t{0}: {1}\n'.format(bisymbol[0], str(bisymbol[1])))
 
-        lines.append('Symbol pairs (by frequency): \n')
-        for bisymbol in bisymbols_by_freq:
-            lines.append('\t{0}: {1}\n'.format(bisymbol[0], str(bisymbol[1])))
+            lines.append('Symbol pairs (by frequency): \n')
+            for bisymbol in (bisymbols_by_freq if full else bisymbols_by_freq[:min(len(bisymbols_by_freq), no_full_limit)]):
+                lines.append('\t{0}: {1}\n'.format(bisymbol[0], str(bisymbol[1])))
 
         with open(filename, 'w') as fh:
             for line in lines:
                 fh.write(line)
-
-        if full is True:
-            for line in lines:
-                print(line)
 
     def file_stats(self, filename, lower, stopwordsfile, bigrams, full):
         """
