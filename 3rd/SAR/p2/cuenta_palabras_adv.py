@@ -42,8 +42,8 @@ class WordCounter:
         symbols_dict = stats['symbol']
         words_dict = stats['word']
 
-        biwords_dict = stats['biword']
-        bisymbols_dict = stats['bisymbol']
+        biwords_dict = stats.get('biword', {})
+        bisymbols_dict = stats.get('bisymbol', {})
 
         sort_by_alpha = lambda t: t[0]
 
