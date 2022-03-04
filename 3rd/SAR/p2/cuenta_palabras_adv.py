@@ -126,10 +126,6 @@ class WordCounter:
 
         # variables for results
 
-        # TODO:
-        # - Biwords count is not correct
-        # - Sort by frequency and alphabetically (this last step seems not to work)
-
         sts = {
                 'nwords': 0,
                 'nlines': 0,
