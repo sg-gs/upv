@@ -62,7 +62,8 @@ class WordCounter:
         lines = []
         lines.append('Lines: ' + str(stats['nlines']) + '\n')
         lines.append('Number words (including stopwords): ' + str(stats['nwords'] + stats['nstopwords']) + '\n')
-        lines.append('Number words (without stopwords): ' + str(stats['nwords']) + '\n')
+        if use_stopwords:
+            lines.append('Number words (without stopwords): ' + str(stats['nwords']) + '\n')
         lines.append('Vocabulary size: ' + str(len(words_dict.items())) + '\n')
 
         lines.append('Number of symbols: ' + str(reduce(lambda a, b: a + b[1], symbols_dict.items(), 0)) + '\n')
