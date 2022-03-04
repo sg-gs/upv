@@ -146,6 +146,8 @@ class WordCounter:
         lines = file.readlines()
 
         for line in lines:
+            if line == '' or line is None: continue
+
             words = list(map(lambda w: re.sub(self.clean_re, "", w.lower() if lower else w), line.split()))
             words = ['$'] + words + ['$']
             sts['nlines'] += 1
@@ -154,17 +156,17 @@ class WordCounter:
                 n = len(words)
 
                 for i in range(n - 1):
-                    if (words[i] == '$' and i == n - 1) or words[i] in stopwords or words[i+1] in stopwords:
-                        continue
+                    if words[i] is None or words[i] == ' ' or words[i] == '': continue
+                    if words[i+1] is None or words[i+1] == ' ' or words[i+1] == '': continue
+                    if words[i] in stopwords or words[i+1] in stopwords: continue
+                    if words[i] == '$' and words[i+1] == '$': continue
 
                     bigram = words[i] + ' ' + words[i+1]
                     sts['biword'][bigram] = sts['biword'].get(bigram, 0) + 1
 
                     bn = len(bigram)
                     for j in range(bn - 1):
-                        # not in ' $'?
-                        if bigram[j] == '$' or bigram[j] == ' ' or (j + 1 < bn and bigram[j+1] == ' '):
-                            continue
+                        if bigram[j] == ' ' or bigram[j+1] == ' ': continue
 
                         bisymbol = bigram[j] + bigram[j+1]
                         sts['bisymbol'][bisymbol] = sts['bisymbol'].get(bisymbol, 0) + 1
@@ -172,6 +174,8 @@ class WordCounter:
             words = map(lambda x: re.sub(self.clean_re, "", x.lower() if lower else x), line.split())
 
             for word in words:
+                if word == ' ' or word == '' or word is None: continue
+
                 if word in stopwords:
                     sts['nstopwords'] += 1
                 else:
