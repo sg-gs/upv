@@ -1,0 +1,39 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "sergio_m",
+    "manager_password": "secret",
+    "service": "sergio_s",
+    "service_password": "secret",
+    "axis":[
+        {
+            "rank": "BDISoldier",
+            "name": "luchador_yourlogin",
+            "password": "secret",
+            "amount": 2,
+            "asl": "luchador.asl"
+        }
+    ], 
+    "allied": [
+		{
+            "rank": "Soldado.BSoldado",
+            "name": "el_soldado_lider",
+            "password": "secret",
+            "amount": 1,
+            "asl": "soldado.asl"
+        },
+        {
+            "rank": "BDIFieldOp",
+            "name": "el_soldado_raso",
+            "password": "secret",
+            "amount": 7,
+            "asl": "soldado_2.asl"
+        },
+        {
+            "rank": "BDIMedic",
+            "name": "medic_allied_yourlogin",
+            "password": "secret",
+            "amount": 2,
+            "asl": "bdimedic.asl"
+        }
+   ]
+}

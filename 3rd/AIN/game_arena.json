@@ -1,0 +1,46 @@
+{
+    "host": "gtirouter.dsic.upv.es",
+    "manager": "dario_m",
+    "manager_password": "secret",
+    "service": "dario_s",
+    "service_password": "secret",
+    "axis": [
+		{
+            "rank": "BDISoldier",
+            "name": "luchador_yourlogin",
+            "password": "secret",
+            "amount": 4,
+            "asl": "luchador.asl"
+        },
+        {
+            "rank": "BDISoldier",
+            "name": "luchadorelbueno_yourlogin",
+            "password": "secret",
+            "amount": 1,
+            "asl": "luchadornuestro.asl"
+        }
+    ],
+     "allied": [
+                {
+            "rank": "invencibleM.BDIMInvencible",
+            "name": "medic_yourlogin",
+            "password": "secret",
+            "amount": 1,
+            "asl": "medic_arena.asl"
+        }, 
+        {
+            "rank": "invencibleF.BDIFInvencible",
+            "name": "luchador",
+            "password": "secret",
+            "amount": 0,
+            "asl": "luchador.asl"
+        },
+        {
+            "rank": "invencibleF.BDIFInvencible",
+            "name": "eldelamunicion",
+            "password": "secret",
+            "amount": 0,
+            "asl": "bdifieldop.asl"
+        }
+   ]
+  }

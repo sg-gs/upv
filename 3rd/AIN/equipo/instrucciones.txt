@@ -1,0 +1,7 @@
+Para ejecutar los módulos nativos de Python has de ejecutar
+
+pygomas run -g pygomas.json 
+
+En el mismo directorio que está el módulo
+
+
